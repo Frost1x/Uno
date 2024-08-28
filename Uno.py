@@ -12,31 +12,40 @@ def playUno():
 
     allCards = redCard + yellowCard + greenCard + blueCard + specialCard
     amountCards = 7
-    playerCards = player(allCards, amountCards)
+    playerCards = Player1(allCards, amountCards)
 
-    while True:
-        userInput = input("Throw in a card: ")
-        if userInput in playerCards:
-            playerCards = removeCard(playerCards, allCards, userInput)
+    while True: 
+        player1 = input("Throw in a card: ")
+        # player2 = input("Throw in a card: ")
+        if player1 in playerCards:
+            playerCards = removeCard(playerCards, allCards, player1)
             print(playerCards)
+        # if player2 in playerCards:
+        #     playerCards = removeCard(playerCards, allCards, player2)
+        #     print(playerCards)
 
-def removeCard(playerCards, allCards, userInput):
-    if userInput in playerCards:
-        playerCards.remove(userInput)
-        if userInput in allCards:
-            allCards.remove(userInput)
+def removeCard(playerCards, allCards, player1):
+    if player1 in playerCards:
+        playerCards.remove(player1)
+        if player1 in allCards:
+            allCards.remove(player1)
     return playerCards
+    # if player2 in playerCards:
+    #     playerCards.remove(player2)
+    #     if player2 in allCards:
+    #         allCards.remove(player2)
+    # return playerCards
 
-def specialCard(userInput, allCards):
-    if userInput == "redPlus2":
+def specialCard(player1, allCards):
+    if player1 == "redPlus2":
         redPlus(allCards)
-    elif userInput == "yellowPlus2":
+    elif player1 == "yellowPlus2":
         yellowPlus(allCards)
-    elif userInput == "greenPlus2":
+    elif player1 == "greenPlus2":
         greenPlus(allCards)
-    elif userInput == "bluePlus2":
+    elif player1 == "bluePlus2":
         bluePlus(allCards)
-    elif userInput == "plus4cards":
+    elif player1 == "plus4cards":
         plus4(allCards)
 
 
@@ -65,16 +74,16 @@ def plus4(allCards):
     print("Plus 4 cards:", special)
 
 
-def player(allCards, amountCards):
+def Player1(allCards, amountCards):
     picker = random.sample(allCards, amountCards)
-    print("Your cards are", picker)
+    print("Player1 your cards are", picker)
     return picker
 
 
-def computer(allCards, amountCards):
-    picker1 = random.sample(allCards, amountCards)
-    print("Computer's cards are", picker1)
-    return picker1
+# def computer(allCards, amountCards):
+#     picker1 = random.sample(allCards, amountCards)
+#     print("Computer's cards are", picker1)
+#     return picker1
 
 
 def main():
