@@ -29,7 +29,8 @@ def removeCard(playerCards, allCards, player1):
         playerCards.remove(player1)
         if player1 in allCards:
             allCards.remove(player1)
-    return playerCards
+    return "Player 1 your cards are",  playerCards #I don't want ""
+    
     # if player2 in playerCards:
     #     playerCards.remove(player2)
     #     if player2 in allCards:
