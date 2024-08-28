@@ -19,7 +19,7 @@ def playUno():
         # player2 = input("Throw in a card: ")
         if player1 in playerCards:
             playerCards = removeCard(playerCards, allCards, player1)
-            print(playerCards)
+            print("Player 1 your cards are:", playerCards)
         # if player2 in playerCards:
         #     playerCards = removeCard(playerCards, allCards, player2)
         #     print(playerCards)
@@ -29,7 +29,7 @@ def removeCard(playerCards, allCards, player1):
         playerCards.remove(player1)
         if player1 in allCards:
             allCards.remove(player1)
-    return "Player 1 your cards are",  playerCards #I don't want ""
+    return playerCards
     
     # if player2 in playerCards:
     #     playerCards.remove(player2)
