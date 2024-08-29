@@ -16,14 +16,17 @@ def playUno():
     playerCards = Player2(allCards, amountCards)
 
     while True: 
-        player1 = input("Throw in a card: ")
-        player2 = input("Throw in a card: ")
+        player1 = input("Player 1, Throw in a card: ")
+        player2 = input("Player 2, Throw in a card: ")
         if player1 in playerCards:
             playerCards = removeCard(playerCards, allCards, player1)
             print("Player 1 your cards are:", playerCards)
+            specialCard1(player1, allCards)
         if player2 in playerCards:
             playerCards = removeCard(playerCards, allCards, player2)
             print("Player 2 your cards are:", playerCards)
+            specialCard2(player2, allCards)
+            
 
 
 def removeCard(playerCards, allCards, player1):
@@ -39,7 +42,7 @@ def removeCard(playerCards, allCards, player1):
             allCards.remove(player2)
     return playerCards
 
-def specialCard(player1, allCards):
+def specialCard1(player1, allCards):
     if player1 == "redPlus2":
         redPlus(allCards)
     elif player1 == "yellowPlus2":
@@ -51,6 +54,17 @@ def specialCard(player1, allCards):
     elif player1 == "plus4cards":
         plus4(allCards)
 
+def specialCard2(player2, allCards):
+    if player2 == "redPlus2":
+        redPlus(allCards)
+    elif player2 == "yellowPlus2":
+        yellowPlus(allCards)
+    elif player2 == "greenPlus2":
+        greenPlus(allCards)
+    elif player2 == "bluePlus2":
+        bluePlus(allCards)
+    elif player2 == "plus4cards":
+        plus4(allCards)
 
 def redPlus(allCards):
     red = random.sample(allCards, 2)
@@ -87,18 +101,9 @@ def Player2(allCards, amountCards):
     print("Player2 your cards are", picker)
     return picker
 
-
-
-# def computer(allCards, amountCards):
-#     picker1 = random.sample(allCards, amountCards)
-#     print("Computer's cards are", picker1)
-#     return picker1
-
-
 def main():
     playUno()
-
-
+    
 if __name__ == "__main__":
     main()
 # not finished yet
