@@ -1,5 +1,5 @@
 import random
-
+#solved Think about a way to check if player cards matches the same color. NOW WALKTHROUGH THE CODE.
 def playUno():
     redCard = ["red0", "red1", "red2", "red3", "red4", "red5", "red6", "red7", "red8", "red9", "redReverse", "redPlus2"]
     yellowCard = ["yellow0", "yellow1", "yellow2", "yellow3", "yellow4", "yellow5", "yellow6", "yellow7", "yellow8",
@@ -12,41 +12,60 @@ def playUno():
 
     allCards = redCard + yellowCard + greenCard + blueCard + specialCard
     amountCards = 7
-    playerCards = Player1(allCards, amountCards)
-    playerCards = Player2(allCards, amountCards)
+    player1Cards = Player1(allCards, amountCards)
+    player2Cards = Player2(allCards, amountCards)
     currentValidCard = random.choice(allCards)
     print("Current card:", currentValidCard)
     while True: 
         
         player1 = input("Player 1, Throw in a card: ")
-        player2 = input("Player 2, Throw in a card: ")
-        if player1 in playerCards:
+        if player1 in player1Cards:
+            if validateMove(player1Cards, currentValidCard):
+                player1Cards = removeCard(player1Cards, player1Cards)
+                print("Player 1 your cards are:", player1Cards)
+                currentValidCard = player1Card
+                if player1Card in specialCard:
+                    specialCardAction(player1Cards, allCards)
+            else:
+                print("Invalid Card. Try again.")
+        else:
+            print("Card not in hand. Try again.")
+         # Player 2's turn
+        player2Card = input("Player 2, Throw in a card: ")
+        if player2Card in player2Cards:
+            if validateMove(player2Cards, currentValidCard):
+                player2Cards = removeCard(player2Cards, allCards, player2Cards)
+                print("Player 2 your cards are:", player2Cards)
+                currentValidCard = player2Cards
+                if player2Cards in specialCard:
+                    specialCardAction(player2Cards, allCards)
+            else:
+                print("Invalid Card. Try again.")
+        else:
+            print("Card not in hand. Try again.")
+            
+def validateMove(card, currentValidCard):
+    if card == "plus4cards":
+        return card == currentValidCard
     
-            playerCards = removeCard(playerCards, allCards, player1)
-            print("Player 1 your cards are:", playerCards)
-            currentValidCard = player1
-            # specialCard1(player1, allCards)
-            
-        if player2 in playerCards:
-            
-            playerCards = removeCard(playerCards, allCards, player2)
-            print("Player 2 your cards are:", playerCards)
-            currentValidCard = player2
-            # specialCard2(player2, allCards)
-            
+    cardColor, cardType = card[:-1], card[-1]
+    currentColor, currentType = currentValidCard[:-1], currentValidCard[-1]
+    
+    return cardColor == currentColor or cardType == currentType
 
-def removeCard(playerCards, allCards, player1):
-    if player1 in playerCards:
-        playerCards.remove(player1)
+
+def removeCard(player1Cards, player2Cards , allCards, player1):
+    if player1 in player1Cards:
+        player1Cards.remove(player1)
         if player1 in allCards:
             allCards.remove(player1)
-    return playerCards
+    return player1Cards
     
-    if player2 in playerCards:
-        playerCards.remove(player2)
+    if player2 in player2Cards:
+        player2Cards.remove(player2)
         if player2 in allCards:
             allCards.remove(player2)
-    return playerCards
+    return player2Cards
 
 def specialCard1(player1, allCards):
     if player1 == "redPlus2":
