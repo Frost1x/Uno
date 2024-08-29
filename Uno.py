@@ -14,20 +14,23 @@ def playUno():
     amountCards = 7
     playerCards = Player1(allCards, amountCards)
     playerCards = Player2(allCards, amountCards)
-
+    currentValidCard = random.choice(allCards)
+    
     while True: 
         player1 = input("Player 1, Throw in a card: ")
         player2 = input("Player 2, Throw in a card: ")
         if player1 in playerCards:
             playerCards = removeCard(playerCards, allCards, player1)
             print("Player 1 your cards are:", playerCards)
+            currentValidCard = player1
             specialCard1(player1, allCards)
+            
         if player2 in playerCards:
             playerCards = removeCard(playerCards, allCards, player2)
             print("Player 2 your cards are:", playerCards)
+            currentValidCard = player2
             specialCard2(player2, allCards)
             
-
 
 def removeCard(playerCards, allCards, player1):
     if player1 in playerCards:
