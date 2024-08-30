@@ -1,0 +1,47 @@
+import random
+
+redCard = ["red0", "red1", "red2", "red3", "red4", "red5", "red6", "red7", "red8", "red9", "redReverse", "redPlus2"]
+yellowCard = ["yellow0", "yellow1", "yellow2", "yellow3", "yellow4", "yellow5", "yellow6", "yellow7", "yellow8", "yellow9", "yellowReverse", "yellowPlus2"]
+
+def test(list1, list2):
+    while True:
+        combinedList = list1 + list2
+        currentCard = random.choice(combinedList)
+    
+        if currentCard.startswith("red"):
+            currentColor = "red"
+        elif currentCard.startswith("yellow"):
+            currentColor = "yellow"
+    
+        print("Current Card:", currentCard)
+    
+        user1 = input("Enter a card for Player 1: ")
+        currentCard = user1 
+        print("Current Card:", currentCard)
+        if user1.startswith("red"):
+            user1Color = "red"
+        elif user1.startswith("yellow"):
+            user1Color = "yellow"
+    
+        if user1Color == currentColor:
+            print('Player 1: True')
+        else:
+            print('Player 1: False')
+            return  
+    
+    
+        user2 = input("Enter a card for Player 2: ")
+        currentCard = user2 
+        print("Current Card:", currentCard)
+        if user2.startswith("red"):
+            user2Color = "red"
+        elif user2.startswith("yellow"):
+            user2Color = "yellow"
+
+        if user2Color == currentColor:
+            print('Player 2: True')
+        else:
+            print('Player 2: False')
+
+test(redCard, yellowCard)
+
