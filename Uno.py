@@ -1,5 +1,5 @@
 import random
-#updated if currentCard matches player1 and player2
+
 def playUno():
     redCard = ["red0", "red1", "red2", "red3", "red4", "red5", "red6", "red7", "red8", "red9", "redReverse", "redPlus2"]
     yellowCard = ["yellow0", "yellow1", "yellow2", "yellow3", "yellow4", "yellow5", "yellow6", "yellow7", "yellow8",
@@ -29,6 +29,7 @@ def playUno():
         print("Current Card:", currentCard)
     
         player1 = input("Player 1, throw in a card: ")
+       
         if player1.startswith("red"):
             player1Color = "red"
         elif player1.startswith("yellow"):
@@ -37,8 +38,9 @@ def playUno():
             player1Color = "green"
         elif player1.startswith("blue"):
             player1Color = "blue"
+        else:
+            player1Color = None  
 
-        
         if player1Color == currentColor or player1.startswith("plus4cards"):
             print('Player 1: True')
         else:
@@ -51,7 +53,6 @@ def playUno():
         else:
             print("Card not found in Player 1's hand")
         
-
         print("Current Card:", currentCard)
         
         player2 = input("Player 2, throw in a card: ")
@@ -64,8 +65,8 @@ def playUno():
         elif player2.startswith("blue"):
             player2Color = "blue"
         else:
-            player2Color = None
-
+            player2Color = None  
+            
         if player2Color == currentColor or player2.startswith("plus4cards"):
             print('Player 2: True')
         else:
@@ -78,6 +79,20 @@ def playUno():
         else:
             print("Card not found in Player 2's hand")
         
+        # Debugging print statements
+        print(f"Player 1's card input: {player1}")
+        print(f"Player 2's card input: {player2}")
+        
+        if player1 == "No Card" or player2 == "No Card":
+            print("One of the players has no card.")
+            getCard(allCards, player1Cards, player2Cards, player1, player2)
+            
+def getCard(allCards, player1Cards, player2Cards, player1, player2):
+    if player1 == "No Card":
+        player1Cards = Player1(allCards, 1)
+    
+    if player2 == "No Card":
+        player2Cards = Player2(allCards, 2)
 
 def removeCard(playerCards, allCards, cardToRemove):
     if cardToRemove in playerCards:
@@ -137,6 +152,11 @@ def Player2(allCards, amountCards):
 
 def main():
     playUno()
+
+
+if __name__ == "__main__":
+    main()
+
 
 
 if __name__ == "__main__":
