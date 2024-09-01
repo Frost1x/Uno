@@ -38,10 +38,8 @@ def playUno():
             player1Color = "green"
         elif player1.startswith("blue"):
             player1Color = "blue"
-        else:
-            player1Color = None  
 
-        if player1Color == currentColor or player1.startswith("plus4cards"):
+        if player1Color == currentColor or player1.startswith("plus4cards") or player1.startswith("red, yellow"):
             print('Player 1: True')
         else:
             print('Player 1: False')
@@ -64,10 +62,8 @@ def playUno():
             player2Color = "green"
         elif player2.startswith("blue"):
             player2Color = "blue"
-        else:
-            player2Color = None  
             
-        if player2Color == currentColor or player2.startswith("plus4cards"):
+        if player2Color == currentColor or player2.startswith("plus4cards")  or player2.startswith("red, yellow"):
             print('Player 2: True')
         else:
             print('Player 2: False')
@@ -79,9 +75,9 @@ def playUno():
         else:
             print("Card not found in Player 2's hand")
         
-        # Debugging print statements
-        print(f"Player 1's card input: {player1}")
-        print(f"Player 2's card input: {player2}")
+        # # Debugging print statements
+        # print(f"Player 1's card input: {player1}")
+        # print(f"Player 2's card input: {player2}")
         
         if player1 == "No Card" or player2 == "No Card":
             print("One of the players has no card.")
@@ -158,7 +154,4 @@ if __name__ == "__main__":
     main()
 
 
-
-if __name__ == "__main__":
-    main()
 
